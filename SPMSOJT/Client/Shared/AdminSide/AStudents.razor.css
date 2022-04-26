@@ -1,0 +1,247 @@
+﻿/*ADMIN DASHBOARD SECTION 1 STARTS HERE*/
+.wrapper .main_content .admindb-s1 {
+    color: var(--dark-cyan);
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px;
+}
+
+.admindb-s1 img {
+    width: 25%;
+}
+
+.admindb-s1 h1 {
+    font-size: 2.5rem;
+}
+
+.admindb-s1 p {
+    font-size: 1.5rem;
+}
+
+@media (max-width:1100px) {
+    .admindb-s1 img {
+        width: 35%;
+    }
+}
+
+@media (max-width:768px) {
+    .admindb-s1 img {
+        width: 45%;
+    }
+}
+/*ADMIN DASHBOARD SECTION 1 ENDS HERE*/
+
+/*ADMIN DASHBOARD SECTION 2 STARTS HERE*/
+.admindb-s2 {
+    margin: 50px 30px 40px 30px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    align-items: center;
+}
+
+    .admindb-s2 .db-item {
+        text-align: center;
+        border: 2px solid var(--dark-cyan);
+        background-color: var(--white);
+        border-radius: 15px;
+        padding: 5rem;
+        cursor: pointer;
+    }
+
+        .admindb-s2 .db-item h3 {
+            font-size: 2rem;
+            color: var(--dark-cyan);
+        }
+
+        .admindb-s2 .db-item h4 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--dark-cyan);
+        }
+
+@media (max-width:1100px) {
+    .admindb-s2 {
+        grid-template-columns: 1fr;
+    }
+
+        .admindb-s2 .db-item {
+            padding: 3rem;
+            cursor: pointer;
+        }
+}
+/*ADMIN DASHBOARD SECTION 2 ENDS HERE*/
+
+/*SEARCH BAR STARTS HERE*/
+.wrapper .search-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.wrapper input[type=text] {
+    padding: 15px;
+    margin-top: 8px;
+    font-size: 21px;
+    border: 2px solid var(--button);
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+    .wrapper input[type=text]:focus {
+        outline: none;
+        border: 2px solid var(--buttonhover);
+    }
+
+.wrapper .search-container .search-button {
+    padding: 13px;
+    /*margin-top: 8px;
+  margin-right: 16px;*/
+    background: var(--button);
+    font-family: "Poppins", sans-serif;
+    font-size: 21px;
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.wrapper .search-container .add-student-button {
+    padding: 7px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: var(--button);
+    font-family: "Poppins", sans-serif;
+    font-size: 21px;
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.wrapper .search-container button:hover {
+    background: var(--buttonhover);
+}
+
+.edit-del-student-button {
+    padding: 8px;
+    background: var(--button);
+    font-family: "Poppins", sans-serif;
+    font-size: 21px;
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover {
+    background: var(--buttonhover);
+}
+
+/*@media (max-width: 600px){
+  .wrapper .search-container {
+    float: none;
+  }
+  .wrapper a, .wrapper input[type=text], .wrapper .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .wrapper input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}*/
+/*SEARCH BAR ENDS HERE*/
+
+/*TABLE STARTS HERE*/
+
+.studentable-s2 {
+    margin: 50px 30px 40px 30px;
+    align-items: center;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 23px;
+    min-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+    .styled-table thead tr {
+        background-color: var(--table);
+        color: var(--white);
+        text-align: left;
+    }
+
+    .styled-table th, .styled-table td {
+        padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+        background-color: #f3f3f3;
+        border-bottom: 1px solid #dddddd;
+    }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3d7;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid var(--table);
+        }
+
+        .styled-table tbody tr.active-row {
+            font-weight: bold;
+            color: var(--table);
+        }
+
+@media (max-width: 768px), (max-width: 1600px) {
+    thead {
+        display: none;
+    }
+
+    td {
+        display: block;
+    }
+
+        td:first-child {
+            background-color: var(--table);
+            color: var(--white);
+            font-weight: 700;
+        }
+
+    .studentable-s2 td:nth-child(2)::before {
+        content: "Last Name:";
+    }
+
+    .studentable-s2 td:nth-child(3)::before {
+        content: "First Name:";
+    }
+
+    .studentable-s2 td:nth-child(4)::before {
+        content: "College:";
+    }
+
+    td {
+        text-align: right;
+        font-weight: 600;
+    }
+
+        td::before {
+            float: left;
+            font-weight: 700;
+            color: var(--dark-cyan);
+        }
+}
+
+/*TABLE ENDS HERE*/

@@ -1,0 +1,78 @@
+﻿@page "/admin"
+@page "/admin/{Url}"
+@layout AdminLayout
+@inject IUserService UserService
+
+<!-- HEADER STARTS HERE -->
+<div class="main_content">
+    <div class="header">
+        @if (Url == null || Url == "dashboard")
+        {
+            <div><i class="fas fa-home"></i> Dashboard</div>
+            <a href="profile.html"><i class="fas fa-solid fa-user" id="profile"></i></a>
+        }
+        else if (Url == "coordinator")
+        {
+            <div><i class="fas fa-solid fa-id-badge"></i>Coordinator</div>
+            <a href="profile.html"><i class="fas fa-solid fa-user" id="profile"></i></a>
+        }
+        else if (Url == "trainee")
+        {
+            <div><i class="fas fa-solid fa-id-badge"></i>Trainees</div>
+            <a href="profile.html"><i class="fas fa-solid fa-user" id="profile"></i></a>
+        }
+        else if (Url == "organization")
+        {
+            <div><i class="fas fa-solid fa-building"></i>Organization</div>
+            <a href="profile.html"><i class="fas fa-solid fa-user" id="profile"></i></a>
+        }
+        else if (Url == "student")
+        {
+            <div><i class="fas fa-solid fa-users"></i>Students</div>
+            <a href="#"><i class="fas fa-solid fa-user" id="profile"></i></a>
+        }
+        else if (Url == "addstudent")
+        {
+            <div><i class="fas fa-solid fa-users"></i>Add Student</div>
+            <a href="#"><i class="fas fa-solid fa-user" id="profile"></i></a>
+        }
+    </div>
+    <!-- HEADER ENDS HERE -->
+    @if (Url == null || Url == "dashboard")
+    {
+        <ADashboard />
+    }
+    else if (Url == "coordinator")
+    {
+        <ACoordinator />
+    }
+    else if (Url == "trainee")
+    {
+        <ATrainees />
+    }
+    else if (Url == "organization")
+    {
+        <AOrganization />
+    }
+    else if (Url == "student")
+    {
+        <AStudents AllStudents="AllStudents"/>
+    }
+    else if (Url == "addstudent")
+    {
+        <AStudentForm />
+    }
+</div>
+
+
+@code {
+    [Parameter]
+    public string Url { get; set; } = null;
+
+    List<User> AllStudents = new List<User>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        AllStudents = await UserService.GetAllUser();
+    }
+}

@@ -1,0 +1,55 @@
+﻿<!-- TRAINEE PAGE CONTENT STARTS HERE -->
+<!-- TRAINEE PAGE SECTION 1 STARTS HERE -->
+<section class="admindb-s1">
+    <div class="search-container">
+        <form action="#">
+            <input type="text" placeholder="Search trainee" name="search">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+        <button type="button" class="add-student-button" onclick="location.href='add-trainee.html';">+ Add New Trainee</button>
+    </div>
+</section>
+<!-- TRAINEE PAGE SECTION 1 ENDS HERE -->
+<!-- TRAINEE PAGE SECTION 2 STARTS HERE -->
+<section class="studentable-s2">
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>School Year</th>
+                <th>Student</th>
+                <th>Coordinator</th>
+                <th>Organization</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2020-2021</td>
+                <td>Juan Dela Cruz</td>
+                <td>Cat Lictaoa</td>
+                <td>Genpact Services LLC</td>
+                <td>
+                    <button type="button" class="edit-del-student-button" onclick="location.href='edit-trainee.html';">Edit</button>
+                    <button type="button" class="edit-del-student-button" onclick="location.href='#';">Delete</button>
+                </td>
+            </tr>
+            <tr class="active-row">
+                <td>2020-2021</td>
+                <td>Charisse Viste</td>
+                <td>Cat Lictaoa</td>
+                <td>Genpact Services LLC</td>
+                <td>
+                    <button type="button" class="edit-del-student-button" onclick="location.href='edit-trainee.html';">Edit</button>
+                    <button type="button" class="edit-del-student-button" onclick="location.href='#';">Delete</button>
+                </td>
+            </tr>
+            <!-- and so on... -->
+        </tbody>
+    </table>
+</section>
+<!-- TRAINEE PAGE SECTION 2 ENDS HERE -->
+<!-- TRAINEE PAGE CONTENT ENDS HERE -->
+
+@code {
+
+}

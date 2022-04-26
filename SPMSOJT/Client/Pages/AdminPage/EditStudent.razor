@@ -1,0 +1,26 @@
+﻿@page "/admin/editstudent/{studentId:int}"
+@layout AdminLayout
+@inject IUserService UserService
+@inject IJSRuntime JsRuntime
+
+<!-- HEADER STARTS HERE -->
+<div class="main_content">
+    <div class="header">
+        <div><i class="fas fa-solid fa-users"></i>Add Student</div>
+        <a href="#"><i class="fas fa-solid fa-user" id="profile"></i></a>
+    </div>
+    <!-- HEADER ENDS HERE -->
+    <AStudentForm user="@user"/>
+</div>
+
+@code {
+    [Parameter]
+    public int studentId { get; set; }
+
+    User user = new User();
+
+    protected async override Task OnInitializedAsync()
+    {
+        user = await UserService.GetUser(studentId);
+    }
+}

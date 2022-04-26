@@ -1,0 +1,182 @@
+﻿/*ADMIN DASHBOARD SECTION 1 STARTS HERE*/
+.wrapper .main_content .admindb-s1 {
+    color: var(--dark-cyan);
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px;
+}
+
+.admindb-s1 img {
+    width: 25%;
+}
+
+.admindb-s1 h1 {
+    font-size: 2.5rem;
+}
+
+.admindb-s1 p {
+    font-size: 1.5rem;
+}
+
+@media (max-width:1100px) {
+    .admindb-s1 img {
+        width: 35%;
+    }
+}
+
+@media (max-width:768px) {
+    .admindb-s1 img {
+        width: 45%;
+    }
+}
+/*ADMIN DASHBOARD SECTION 1 ENDS HERE*/
+
+/*ADMIN DASHBOARD SECTION 2 STARTS HERE*/
+.admindb-s2 {
+    margin: 50px 30px 40px 30px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    align-items: center;
+}
+
+    .admindb-s2 .db-item {
+        text-align: center;
+        border: 2px solid var(--dark-cyan);
+        background-color: var(--white);
+        border-radius: 15px;
+        padding: 5rem;
+        cursor: pointer;
+    }
+
+        .admindb-s2 .db-item h3 {
+            font-size: 2rem;
+            color: var(--dark-cyan);
+        }
+
+        .admindb-s2 .db-item h4 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--dark-cyan);
+        }
+
+@media (max-width:1100px) {
+    .admindb-s2 {
+        grid-template-columns: 1fr;
+    }
+
+        .admindb-s2 .db-item {
+            padding: 3rem;
+            cursor: pointer;
+        }
+}
+/*ADMIN DASHBOARD SECTION 2 ENDS HERE*/
+
+/*SEARCH BAR STARTS HERE*/
+.wrapper .search-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.wrapper input[type=text] {
+    padding: 15px;
+    margin-top: 8px;
+    font-size: 21px;
+    border: 2px solid var(--button);
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+    .wrapper input[type=text]:focus {
+        outline: none;
+        border: 2px solid var(--buttonhover);
+    }
+
+.wrapper .search-container .search-button {
+    padding: 13px;
+    background: var(--button);
+    font-family: "Poppins", sans-serif;
+    font-size: 21px;
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.wrapper .search-container .add-student-button {
+    padding: 7px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: var(--button);
+    font-family: "Poppins", sans-serif;
+    font-size: 21px;
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+
+.wrapper .search-container button:hover {
+    background: var(--buttonhover);
+}
+
+@media (max-width: 768px) {
+    .wrapper input[type=text], .wrapper .search-container .search-button, .wrapper .search-container .add-student-button {
+        font-size: 19px;
+    }
+}
+
+/*SEARCH BAR ENDS HERE*/
+
+/*COORDINATOR SECTION STARTS HERE*/
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+/* BUTTON */
+
+.edit-coordinator-button {
+    padding: 8px;
+    background: var(--dark-cyan);
+    font-family: "Poppins", sans-serif;
+    font-size: 21px;
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover {
+    background: var(--button);
+}
+
+.del-coordinator-button {
+    padding: 8px;
+    background: var(--white);
+    font-family: "Poppins", sans-serif;
+    font-size: 21px;
+    color: var(--dark-cyan);
+    border: 1px solid var(--dark-cyan);
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+    .del-coordinator-button:hover {
+        background: var(--buttonhover);
+    }
+
+/*COORDINATOR SECTION  HERE*/

@@ -1,0 +1,203 @@
+﻿@inject IJSRuntime JsRuntime
+@inject NavigationManager NavMenu
+@inject IUserService UserService 
+@inject IToastService Toast
+    
+<!-- ADD STUDENT STARTS HERE -->
+<div class="content">
+        <div class="upload-img">
+            <label for="file-upload" class="custom-file-upload">
+                <div class="upload-btn"><i class="fas fa-solid fa-user"></i></div>
+            </label>
+            <input id="file-upload" type="file" />
+        </div>
+        <label>Please upload 2x2 image here.</label>
+
+        <h3>Personal Information</h3>
+        <hr>
+
+        <EditForm Model="user" OnValidSubmit="OnStudentSubmit">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <div class="row">
+                <div class="col">
+                    <label for="lastname">Last Name</label>
+                    <ValidationMessage For="() => user.last_name" />
+                    <input type="text" id="lastname" @bind-value="user.last_name" placeholder="Last name">
+                </div>
+                <div class="col">
+                    <label for="firstname">First Name</label>
+                    <ValidationMessage For="() => user.first_name" />
+                    <input type="text" id="firstname" @bind-value="user.first_name" placeholder="First name">
+                </div>
+                <div class="col">
+                    <label for="middleinitial">Middle Initial</label>
+                    <ValidationMessage For="() => user.middle_name" />
+                    <input type="text" id="middleinitial" @bind-value="user.middle_name" placeholder="Middle initial">
+                </div>
+                <div class="col">
+                    <label for="suffix">Suffix</label>
+                    <input type="text" id="suffix" @bind-value="user.suffix" placeholder="Suffix">
+                </div>
+            </div>
+
+            <label for="address">Address</label>
+            <div class="row">
+                <div class="col">
+                    <ValidationMessage For="() => user.barangay" />
+                    <input type="text" id="barangay" @bind-value="user.barangay" placeholder="Barangay">
+                </div>
+                <div class="col">
+                    <ValidationMessage For="() => user.city" />
+                    <input type="text" id="city" @bind-value="user.city" placeholder="Town/City">
+                </div>
+                <div class="col">
+                    <ValidationMessage For="() => user.province" />
+                    <input type="text" id="province" @bind-value="user.province" placeholder="Province">
+                </div>
+                <div class="col">
+                    <ValidationMessage For="() => user.zipcode" />
+                    <input type="text" id="zipcode" @bind-value="user.zipcode" placeholder="Zip code">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="email">Email Address</label>
+                    <ValidationMessage For="() => user.email" />
+                    <input type="text" id="email" @bind-value="user.email" placeholder="Email Address">
+                </div>
+                <div class="col">
+                    <label for="address">Contact number</label>
+                    <ValidationMessage For="() => user.phonenum" />
+                    <input type="text" id="contno" @bind-value="user.phonenum" placeholder="Contact number">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="citizen">Citizenship</label>
+                    <ValidationMessage For="() => user.citizenship" />
+                    <input type="text" id="citizen" @bind-value="user.citizenship" placeholder="Citizenship">
+                </div>
+                <div class="col">
+                    <label for="gender">Gender</label>
+                    <ValidationMessage For="() => user.sex" />
+                    <select id="gender" @onchange="SexOnChange">
+                        <option selected hidden="">Gender</option>
+                        <option name="gender" value="female">Female</option>
+                        <option name="gender" value="male">Male</option>
+                    </select>
+                </div>
+            </div>
+
+            <h3>School Information</h3>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <label for="schoolemail">School issued E-mail</label>
+                    <ValidationMessage For="() => user.schoolemail" />
+                    <input type="text" id="schoolemail" @bind-value="user.schoolemail" placeholder="School E-mail">
+                </div>
+                <div class="col">
+                    <label for="idnum">ID Number</label>
+                    <ValidationMessage For="() => user.idnumber" />
+                    <input type="text" id="idnum" @bind-value="user.idnumber" placeholder="ID Number">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="college">College/Institute</label>
+                    <ValidationMessage For="() => user.college" />
+                    <input type="text" id="college" @bind-value="user.college" placeholder="College/Institute">
+                </div>
+                <div class="col">
+                    <label for="school">School</label>
+                    <ValidationMessage For="() => user.schoolname" />
+                    <input type="text" id="school" @bind-value="user.schoolname" placeholder="School">
+                </div>
+            </div>
+
+            <label for="schooladd">School Address</label>
+            <div class="row">
+                <div class="col">
+                    <ValidationMessage For="() => user.school_barangay" />
+                    <input type="text" id="scbarangay" @bind-value="user.school_barangay" placeholder="Barangay">
+                </div>
+                <div class="col">
+                    <ValidationMessage For="() => user.school_province" />
+                    <input type="text" id="sccity" @bind-value="user.school_city" placeholder="Town/City">
+                </div>
+                <div class="col">
+                    <ValidationMessage For="() => user.last_name" />
+                    <input type="text" id="scprovince" @bind-value="user.school_province" placeholder="Province">
+                </div>
+                <div class="col">
+                    <ValidationMessage For="() => user.school_zipcode" />
+                    <input type="text" id="sczipcode" @bind-value="user.school_zipcode" placeholder="Zip code">
+                </div>
+            </div>
+
+            <h3>Login Information</h3>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <label for="login">Email</label>
+                    <ValidationMessage For="() => user.email" />
+                    <input type="text" id="login" @bind-value="user.email" placeholder="Email">
+                </div>
+                <div class="col">
+                    <label for="password">Password</label>
+                    <ValidationMessage For="() => user.password" />
+                    <input type="password" id="password" @bind-value="user.password" placeholder="Password">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="forbutton">
+                    <input type="submit" value="SUBMIT">
+                    <a class="button" @onclick="OnClickCancel">Cancel</a>
+                </div>
+            </div>
+        </EditForm>
+</div>
+<!-- ADD STUDENT ENDS HERE -->
+
+@code {
+    [Parameter]
+    public User user { get; set; } = new User();
+
+    private async Task OnStudentSubmit()
+    {
+        if(user.Id == 0)
+        {
+            var Users = await UserService.AddUser(user);
+            if (Users != null)
+            {
+                await JsRuntime.InvokeVoidAsync("console.log", Users);
+                Toast.ShowSuccess("New Students Successfully Added", "New Student Added");
+                NavMenu.NavigateTo("/admin/student", false);
+            }
+        }
+        else
+        {
+            var Users = await UserService.UpdateUser(user);
+            if (Users != null)
+            {
+                Toast.ShowSuccess("Student Succesfully Updated", "Update Success");
+                NavMenu.NavigateTo("/admin/student", false);
+            }
+        }
+
+    }
+
+    private void SexOnChange(ChangeEventArgs e)
+    {
+        user.sex = e.Value.ToString();
+    }
+
+    private void OnClickCancel()
+    {
+        NavMenu.NavigateTo("/admin/student");
+    }
+}

@@ -1,0 +1,74 @@
+﻿@inject NavigationManager NavManager 
+@inject IUserService UserService
+@inject IToastService Toast
+    
+<!-- STUDENT PAGE CONTENT STARTS HERE -->
+<!-- STUDENT PAGE SECTION 1 STARTS HERE -->
+<section class="admindb-s1">
+    <div class="search-container">
+        <form action="#">
+            <input type="text" placeholder="Search student" name="search">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+        <button type="button" class="add-student-button" @onclick="OnClickAddStudent">+ Add New Student</button>
+    </div>
+</section>
+<!-- STUDENT PAGE SECTION 1 ENDS HERE -->
+<!-- STUDENT PAGE SECTION 2 STARTS HERE -->
+<section class="studentable-s2">
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>ID Number</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>College</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in AllStudents)
+            {
+                <tr>
+                    <td>@student.idnumber</td>
+                    <td>@student.last_name</td>
+                    <td>@student.first_name</td>
+                    <td>@student.college</td>
+                    <td>
+                        <button type="button" class="edit-del-student-button" @onclick="() => OnClickEditStudent(student.Id)">Edit</button>
+                        <button type="button" class="edit-del-student-button" @onclick="() => OnClickDeleteStudent(student)">Delete</button>
+                    </td>
+                </tr>
+            }
+            <!-- and so on... -->
+        </tbody>
+    </table>
+</section>
+<!-- STUDENT PAGE SECTION 2 ENDS HERE -->
+<!-- STUDENT PAGE CONTENT ENDS HERE -->
+
+@code {
+    [Parameter]
+    public List<User> AllStudents { get; set; } = null;
+
+
+    private void OnClickEditStudent(int studentId)
+    {
+        NavManager.NavigateTo($"admin/editstudent/{studentId}");
+    }
+
+    private async Task OnClickDeleteStudent(User user)
+    {
+        AllStudents = await UserService.DeleteUser(user);
+        if(AllStudents != null)
+        {
+            Toast.ShowSuccess("Student Succesfully Deleted", "Delete Success");
+            NavManager.NavigateTo("/admin/student", false);
+        }
+    }
+
+    private void OnClickAddStudent()
+    {
+        NavManager.NavigateTo("admin/addstudent");
+    }
+}
