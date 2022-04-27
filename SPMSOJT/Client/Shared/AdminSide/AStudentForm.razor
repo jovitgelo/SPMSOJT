@@ -1,5 +1,4 @@
-﻿@inject IJSRuntime JsRuntime
-@inject NavigationManager NavMenu
+﻿@inject NavigationManager NavMenu
 @inject IUserService UserService 
 @inject IToastService Toast
     
@@ -16,12 +15,21 @@
         <h3>Personal Information</h3>
         <hr>
 
+        <!-- EditForm is the form of blazor
+                    the model is the object that you will be using to store all the data
+                    themodel/object is located at the SPMSOJT.Shared
+                    the onvalid submit will be function that will be run after clicking submit-->
         <EditForm Model="user" OnValidSubmit="OnStudentSubmit">
+            <!-- This will be the validator that you used in the model
+                    [Required{error message: "example"}]-->
             <DataAnnotationsValidator></DataAnnotationsValidator>
             <div class="row">
                 <div class="col">
                     <label for="lastname">Last Name</label>
+                    <!-- where the error message will pop up if the validation is false
+        [Required{error message: "example"}]-->
                     <ValidationMessage For="() => user.last_name" />
+                    <!-- bind.value is use to store the data in the object property-->
                     <input type="text" id="lastname" @bind-value="user.last_name" placeholder="Last name">
                 </div>
                 <div class="col">
@@ -164,6 +172,9 @@
 <!-- ADD STUDENT ENDS HERE -->
 
 @code {
+    //Get the User that is passed if this component is used
+    //Not Required
+    //Pass Only if used in editing or updating
     [Parameter]
     public User user { get; set; } = new User();
 
@@ -171,11 +182,13 @@
     {
         if(user.Id == 0)
         {
+ 
             var Users = await UserService.AddUser(user);
             if (Users != null)
             {
-                await JsRuntime.InvokeVoidAsync("console.log", Users);
+                //toast is like the alert in php, a pop up class
                 Toast.ShowSuccess("New Students Successfully Added", "New Student Added");
+                //used to navigate in different pages
                 NavMenu.NavigateTo("/admin/student", false);
             }
         }
@@ -193,11 +206,13 @@
 
     private void SexOnChange(ChangeEventArgs e)
     {
+        //if the sex selection is changed, store its value at user.Sex
         user.sex = e.Value.ToString();
     }
 
     private void OnClickCancel()
     {
+        //Cancel Button
         NavMenu.NavigateTo("/admin/student");
     }
 }

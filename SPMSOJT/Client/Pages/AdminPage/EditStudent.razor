@@ -10,17 +10,24 @@
         <a href="#"><i class="fas fa-solid fa-user" id="profile"></i></a>
     </div>
     <!-- HEADER ENDS HERE -->
-    <AStudentForm user="@user"/>
+    <!-- Shared Components. Send the user to the student form -->
+    <AStudentForm user="@user" />
 </div>
 
 @code {
+    //Get the url before after the admin/editstudent/
     [Parameter]
     public int studentId { get; set; }
 
+    //Create new instance of user in this page
     User user = new User();
 
+    //Get student based on the student id first before loading the page
     protected async override Task OnInitializedAsync()
     {
+        //Get student based on Id
+        //use Task and async func for the REST API
+        //Inject the IUserService first at the top to use the UserService class
         user = await UserService.GetUser(studentId);
     }
 }

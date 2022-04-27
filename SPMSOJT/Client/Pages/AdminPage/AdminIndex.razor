@@ -3,9 +3,12 @@
 @layout AdminLayout
 @inject IUserService UserService
 
+ <!-- Type /admin to open this file in browser-->
+
 <!-- HEADER STARTS HERE -->
 <div class="main_content">
     <div class="header">
+        <!-- Display Different Header depending on the url after admin/ -->
         @if (Url == null || Url == "dashboard")
         {
             <div><i class="fas fa-home"></i> Dashboard</div>
@@ -38,8 +41,14 @@
         }
     </div>
     <!-- HEADER ENDS HERE -->
+    <!-- Display Different component depending on the url after admin/ -->
     @if (Url == null || Url == "dashboard")
     {
+        <!-- A Shared Component. 
+            Path File: 
+                SPMSOJT.Client
+                    -Shared
+                        -Admin Side -->
         <ADashboard />
     }
     else if (Url == "coordinator")
@@ -56,7 +65,7 @@
     }
     else if (Url == "student")
     {
-        <AStudents AllStudents="AllStudents"/>
+        <AStudents AllStudents="AllStudents" />
     }
     else if (Url == "addstudent")
     {
@@ -66,13 +75,19 @@
 
 
 @code {
+    //Get the url before after the admin/
     [Parameter]
     public string Url { get; set; } = null;
 
+    //Create new instance of a list of user in this page
     List<User> AllStudents = new List<User>();
 
+    //Get all student first before loading the page
     protected async override Task OnInitializedAsync()
     {
+        //Get all student
+        //use Task and async func for the REST API
+        //Inject the IUserService first at the top to use the UserService class
         AllStudents = await UserService.GetAllUser();
     }
 }
